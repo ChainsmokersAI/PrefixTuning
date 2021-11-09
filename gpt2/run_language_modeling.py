@@ -1096,12 +1096,13 @@ def main():
         elem = os.path.abspath(training_args.output_dir)
         checkpoint_path = elem
 
-        print('running evaluation on ', checkpoint_path)
+        # Modified: NO Evaluation
+        # print('running evaluation on ', checkpoint_path)
 
-        print('python gen.py webnlg yes valid {} no'.format(checkpoint_path))
-        print('python gen.py webnlg yes test {} no'.format(checkpoint_path))
-        os.system('python gen.py webnlg yes valid {} no'.format(checkpoint_path))
-        os.system('python gen.py webnlg yes test {} no'.format(checkpoint_path))
+        # print('python gen.py webnlg yes valid {} no'.format(checkpoint_path))
+        # print('python gen.py webnlg yes test {} no'.format(checkpoint_path))
+        # os.system('python gen.py webnlg yes valid {} no'.format(checkpoint_path))
+        # os.system('python gen.py webnlg yes test {} no'.format(checkpoint_path))
 
 
         # also run for early stopping:

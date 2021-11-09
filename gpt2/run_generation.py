@@ -834,9 +834,13 @@ def main():
         QUICK_CHECK = False
         if args.task_mode == 'webnlg':
             if args.eval_dataset == 'valid':
-                test_path = "/u/scr/xlisali/WebNLG/webnlg-dataset/webnlg_challenge_2017/dev.json"
+                # Modified
+                test_path='../data/webnlg_challenge_2017/dev.json'
+                # test_path = "/u/scr/xlisali/WebNLG/webnlg-dataset/webnlg_challenge_2017/dev.json"
             elif args.eval_dataset == 'test':
-                test_path = "/u/scr/xlisali/WebNLG/webnlg-dataset/webnlg_challenge_2017/test.json"
+                # Modified
+                test_path='../data/webnlg_challenge_2017/test.json'
+                # test_path = "/u/scr/xlisali/WebNLG/webnlg-dataset/webnlg_challenge_2017/test.json"
             else:
                 assert False,  "eval_dataset needs to be [valid, test]"
             prompt_text_dict = read_webnlg_files(test_path, tokenizer)
@@ -859,16 +863,22 @@ def main():
                 temp = os.path.basename(args.model_name_or_path)
             split_file = args.eval_dataset # test
             decode_mode = 'beam'
-            curr_dir = os.path.join('/u/scr/xlisali/contrast_LM/transformers/examples/text-generation/',
+            # Modified
+            # curr_dir = os.path.join('/u/scr/xlisali/contrast_LM/transformers/examples/text-generation/',
+            curr_dir = os.path.join('./generated/',
                                     args.gen_dir,
                                     '{}_{}_{}'.format(temp, split_file, decode_mode))
             print(curr_dir)
-            gold_dir = os.path.join('/u/scr/xlisali/contrast_LM/transformers/examples/text-generation/',
+            # Modified
+            # gold_dir = os.path.join('/u/scr/xlisali/contrast_LM/transformers/examples/text-generation/',
+            gold_dir = os.path.join('./generated/',
                                     args.gen_dir,
                                     '{}_{}_{}'.format(temp, split_file, 'gold'))
             print(gold_dir)
             write_e2e_corr(prompt_text_pair, prompt_text_dict, gold_dir)
-            src_dir = os.path.join('/u/scr/xlisali/contrast_LM/transformers/examples/text-generation/',
+            # Modified
+            # src_dir = os.path.join('/u/scr/xlisali/contrast_LM/transformers/examples/text-generation/',
+            src_dir = os.path.join('./generated/',
                                     args.gen_dir,
                                     '{}_{}_{}'.format(temp, split_file, 'src'))
             write_e2e_src(prompt_text_pair, src_dir)
